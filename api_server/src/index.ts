@@ -4,8 +4,8 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/repeat', (req: any, res: any) => {
-
+app.post('/repeat', (req: any, res: any) => {
+    
 });
 
 const port: number = 4090;
