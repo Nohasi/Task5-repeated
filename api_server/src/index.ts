@@ -9,6 +9,7 @@ app.use(express.json());
 app.post('/repeat', (req: any, res: any) => {
 
     let resultObj = Object.fromEntries(findRepeats(req.body.sentence));
+    console.log(resultObj);
     res.status(200).json({
         status: 200,
         result: resultObj
