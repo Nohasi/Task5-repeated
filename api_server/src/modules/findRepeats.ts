@@ -1,6 +1,12 @@
+// Type that would contain letters, counts, and the max
+type LetterContainer = {
+    maximum: number,
+    [key: string]: number
+}
+
 export const findRepeats = (sentence: string) => {
     const {maximum, ...counts} = (sentence).split("").reduce(
-        (obj:any, letter:any) => {
+        (obj:LetterContainer, letter:string) => {
             // if obj[letter] is counted already, increment count else set the count to 1
             obj[letter] = obj[letter] ? obj[letter] + 1 : 1;
 
