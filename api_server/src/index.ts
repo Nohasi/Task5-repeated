@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.post('/repeat', (req: express.Request, res: express.Response) => {
     const error = invalidRequest(req);
+    // If error is null, no error was found and request is valid
     if(error != null){
         res.status(406).json({
             status: 406,
@@ -19,6 +20,7 @@ app.post('/repeat', (req: express.Request, res: express.Response) => {
     }
     res.status(200).json({
         status: 200,
+        // findRepeats finds highest frequency letters, firstLetter returns first one alphabetically
         result: firstLetter(findRepeats(req.body.sentence))
     });
 });

@@ -20,6 +20,8 @@ export const findRepeats = (sentence: string) => {
         },
         { maximum: 0 }
     );
+
+    //Building usable array object
     const result = Object.entries(counts).filter(([key, value]) => value === maximum);
     const numAtMax = result.length;
     let outputContainer = [];
