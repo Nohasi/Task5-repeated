@@ -5,7 +5,7 @@ type LetterContainer = {
 }
 
 export const findRepeats = (sentence: string) => {
-    const {maximum, ...counts} = (sentence).split("").reduce(
+    const {maximum, ...counts} = (sentence).toLowerCase().split("").reduce(
         (obj:LetterContainer, letter:string) => {
             if(/[a-zA-Z]/.test(letter)){
                 // if obj[letter] is counted already, increment count else set the count to 1
