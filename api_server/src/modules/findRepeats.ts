@@ -12,6 +12,7 @@ export const findRepeats = (sentence: string) => {
             }
         }
     });
+    console.log(outputContainer);
 
     return outputContainer;
 }

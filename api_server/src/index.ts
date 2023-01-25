@@ -1,3 +1,5 @@
+import { findRepeats } from "./modules/findRepeats";
+
 const express = require('express');
 
 const app = express();
@@ -5,7 +7,12 @@ const app = express();
 app.use(express.json());
 
 app.post('/repeat', (req: any, res: any) => {
-    
+
+    let resultObj = Object.fromEntries(findRepeats(req.body.sentence));
+    res.status(200).json({
+        status: 200,
+        result: resultObj
+    });
 });
 
 const port: number = 4090;
