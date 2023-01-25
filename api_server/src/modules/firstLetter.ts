@@ -13,6 +13,5 @@ export const firstLetter = (values: {letter: string;count: any;}[]) => {
         return 0;
     })
 
-    return values;
-
+    return values[0];
 }
