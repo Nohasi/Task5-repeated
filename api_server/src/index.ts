@@ -1,4 +1,5 @@
 import { findRepeats } from "./modules/findRepeats";
+import { firstLetter } from "./modules/firstLetter";
 
 const express = require('express');
 
@@ -7,12 +8,11 @@ const app = express();
 app.use(express.json());
 
 app.post('/repeat', (req: any, res: any) => {
-
-    let resultObj = Object.fromEntries(findRepeats(req.body.sentence));
-    console.log(resultObj);
+    
+    
     res.status(200).json({
         status: 200,
-        result: resultObj
+        result: firstLetter(findRepeats(req.body.sentence))
     });
 });
 

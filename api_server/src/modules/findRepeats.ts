@@ -10,7 +10,6 @@ export const findRepeats = (sentence: string) => {
             if(/[a-zA-Z]/.test(letter)){
                 // if obj[letter] is counted already, increment count else set the count to 1
                 obj[letter] = obj[letter] ? obj[letter] + 1 : 1;
-
                 // if current maximum is lower than the letter's count, the letter's count is the new maximum
                 obj.maximum = obj.maximum < obj[letter] ? obj[letter] : obj.maximum;
                 return obj;
@@ -21,6 +20,16 @@ export const findRepeats = (sentence: string) => {
         },
         { maximum: 0 }
     );
-
-    return Object.entries(counts).filter(([key, value]) => value === maximum);
+    const result = Object.entries(counts).filter(([key, value]) => value === maximum);
+    const numAtMax = result.length;
+    let outputContainer = [];
+    for(let i = 0; i < numAtMax; i++){
+        outputContainer.push(
+            {
+                letter: result[i][0],
+                count: result[i][1]
+            }
+        );
+    }
+    return outputContainer;
 }
