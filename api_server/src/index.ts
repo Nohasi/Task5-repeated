@@ -1,8 +1,8 @@
 import { findRepeats } from "./modules/findRepeats";
 import { firstLetter } from "./modules/firstLetter";
+import { invalidRequest } from "./modules/invalidRequest";
 
 import express = require('express');
-import { invalidRequest } from "./modules/invalidRequest";
 
 const app = express();
 

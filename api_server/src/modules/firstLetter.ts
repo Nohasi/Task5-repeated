@@ -3,6 +3,7 @@ type ValueItem = {
     count: number
 }
 export const firstLetter = (values: {letter: string;count: any;}[]) => {
+    
     // Passing function in sort() that compares all letters
     values.sort((letter1: ValueItem, letter2: ValueItem)=> {
         if (letter1.letter < letter1.letter) {
