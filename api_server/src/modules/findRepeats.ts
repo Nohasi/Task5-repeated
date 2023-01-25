@@ -1,18 +1,15 @@
 export const findRepeats = (sentence: string) => {
-    // Container to store letter frequencies
-    const outputContainer: Map<string, number> = new Map();
-    const lowerSentence: string[] = sentence.toLowerCase().split("");
-    lowerSentence.forEach((char: string) => {
-        if((/[a-zA-Z]/).test(char)){
-            if(outputContainer.get(char) === undefined){
-                outputContainer.set(char, 1);
-            }
-            else {
-                outputContainer.set(char, (outputContainer?.get(char)?? 0) + 1);
-            }
-        }
-    });
-    console.log(outputContainer);
+    const {maximum, ...counts} = (sentence).split("").reduce(
+        (obj:any, letter:any) => {
+            // if obj[letter] is counted already, increment count else set the count to 1
+            obj[letter] = obj[letter] ? obj[letter] + 1 : 1;
 
-    return outputContainer;
+            // if current maximum is lower than the letter's count, the letter's count is the new maximum
+            obj.maximum = obj.maximum < obj[letter] ? obj[letter] : obj.maximum;
+            return obj;
+        },
+        { maximum: 0 }
+    );
+
+    return Object.entries(counts).filter(([key, value]) => value === maximum);
 }
