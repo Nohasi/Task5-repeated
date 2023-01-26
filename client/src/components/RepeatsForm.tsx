@@ -16,8 +16,10 @@ export const RepeatsForm = (props: FormTypes) => {
                 props.setResNumber(response.result.count);
                 props.setErrorStatus(false);
                 props.setErrorMessage('');
+                props.setPageInteraction(true);
             }
             else{ // if not, an error is returned
+                props.setPageInteraction(true);
                 props.setErrorStatus(true);
                 props.setErrorMessage(`Error: ${response.error}`);
             }
@@ -35,6 +37,7 @@ export const RepeatsForm = (props: FormTypes) => {
                                 type="text" 
                                 value={props.sentence}
                                 onChange={(e) => props.setSentence(e.target.value)}
+                                maxLength={500}
                                 placeholder="Enter Sentence Here!" 
                             />
                         </div>

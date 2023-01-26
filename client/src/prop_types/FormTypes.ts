@@ -5,5 +5,6 @@ export interface FormTypes {
     setResLetter: React.Dispatch<React.SetStateAction<string>>, 
     setResNumber: React.Dispatch<React.SetStateAction<number>>, 
     setErrorStatus: React.Dispatch<React.SetStateAction<boolean>>, 
-    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+    setPageInteraction: React.Dispatch<React.SetStateAction<boolean>>
 }
