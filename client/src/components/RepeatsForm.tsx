@@ -6,12 +6,12 @@ import { getRepeatedLetter } from "../services/getRepeatedLetter";
 
 export const RepeatsForm = (props: FormTypes) => {
 
-    const getResult = (e: any) => {
+    const getResult = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         getRepeatedLetter(props.sentence).then((response: any) => {
             // If status is 200, valid sentence was passed
             if(response.status === 200){
-
+                console.log(response);
                 props.setErrorStatus(false);
                 props.setErrorMessage('');
             }
@@ -35,7 +35,7 @@ export const RepeatsForm = (props: FormTypes) => {
                             />
                         </div>
                         <div className="row">
-                            <button type="submit" className="btn btn-info">What letter was repeated most?</button>
+                            <button type="submit" onClick={getResult} className="btn btn-info">What letter was repeated most?</button>
                         </div>
                     </form>
                 </div>
