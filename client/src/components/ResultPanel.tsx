@@ -6,9 +6,10 @@ export const ResultPanel = (props: PanelTypes) => {
     <div style={{backgroundColor:'#c6e2e9'}} className="display-board">
         <h4 style={{color: 'black'}}>Result:</h4>
         <div className="number">
-            {props.errorStatus
+            {// If errorStatus is true, display "Error" instead of a result
+            props.errorStatus 
             ? <div>Error</div>
-            : <div>{`${props.resLetter} : ${props.resNumber}`}</div>
+            : <div>{`${props.resLetter.toUpperCase()} : ${props.resNumber}`}</div>
             }
         </div>
     </div>

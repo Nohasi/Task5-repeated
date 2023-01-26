@@ -33,6 +33,7 @@ export const RepeatsPage = () => {
                     </div>
                     <div className="col-md-4">
                         {
+                            // If pageInteraction == false, panel will be hidden from user
                             pageInteraction
                             ? <ResultPanel
                                 resLetter={resLetter}
@@ -45,7 +46,7 @@ export const RepeatsPage = () => {
                 </div>
             </div>
             <div className="container mrgnbtm">
-                { // If no process has been done yet, do not show results/error panel
+                { // If an error is found, show error panel; else hide from user
                     errorStatus
                     ? <ErrorPanel 
                         errorMessage={errorMessage}
