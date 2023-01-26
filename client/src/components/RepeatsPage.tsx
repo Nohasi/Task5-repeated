@@ -6,7 +6,7 @@ import { ResultPanel } from './ResultPanel';
 
 export const RepeatsPage = () => {
 
-    let [num, setNum] = useState('');
+    let [sentence, setSentence] = useState('');
     let [resLetter, setResLetter] = useState('');
     let [resNumber, setResNumber] = useState(0);
     let [errorStatus, setErrorStatus] = useState(false);
@@ -18,7 +18,14 @@ export const RepeatsPage = () => {
             <div className="container mrgnbtm">
                 <div className="row">
                     <div className="col-md-8">
-                        <RepeatsForm/>
+                        <RepeatsForm
+                            sentence={sentence}
+                            setSentence={setSentence}
+                            setResLetter={setResLetter}
+                            setResNumber={setResNumber}
+                            setErrorStatus={setErrorStatus}
+                            setErrorMessage={setErrorMessage}
+                        />
                     </div>
                     <div className="col-md-4">
                         <ResultPanel/>

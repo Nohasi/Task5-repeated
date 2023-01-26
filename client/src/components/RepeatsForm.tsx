@@ -1,6 +1,27 @@
 import React from "react";
+import { FormTypes } from "../prop_types/FormTypes";
+import { getRepeatedLetter } from "../services/getRepeatedLetter";
 
-export const RepeatsForm = () => {
+// props contains {sentence, setSentence, setResLetter, setResNumber, setErrorStatus, setErrorMessage}
+
+export const RepeatsForm = (props: FormTypes) => {
+
+    const getResult = (e: any) => {
+        e.preventDefault();
+        getRepeatedLetter(props.sentence).then((response: any) => {
+            // If status is 200, valid sentence was passed
+            if(response.status === 200){
+
+                props.setErrorStatus(false);
+                props.setErrorMessage('');
+            }
+            else{ // if not, an error is returned
+                props.setErrorStatus(true);
+                props.setErrorMessage(`Error: ${response.error}`);
+            }
+        })
+    }
+
     return (
         <div className="container">
             <div className="row">
