@@ -4,6 +4,7 @@ import { getRepeatedLetter } from "../services/getRepeatedLetter";
 
 // props contains {sentence, setSentence, setResLetter, setResNumber, setErrorStatus, setErrorMessage}
 
+
 export const RepeatsForm = (props: FormTypes) => {
 
     const getResult = (e: React.MouseEvent<HTMLElement>) => {
@@ -11,7 +12,8 @@ export const RepeatsForm = (props: FormTypes) => {
         getRepeatedLetter(props.sentence).then((response: any) => {
             // If status is 200, valid sentence was passed
             if(response.status === 200){
-                console.log(response);
+                props.setResLetter(response.result.letter);
+                props.setResNumber(response.result.count);
                 props.setErrorStatus(false);
                 props.setErrorMessage('');
             }
@@ -31,6 +33,8 @@ export const RepeatsForm = (props: FormTypes) => {
                         <div className="row">
                             <input 
                                 type="text" 
+                                value={props.sentence}
+                                onChange={(e) => props.setSentence(e.target.value)}
                                 placeholder="Enter Sentence Here!" 
                             />
                         </div>
