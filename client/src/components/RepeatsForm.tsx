@@ -7,6 +7,10 @@ import { getRepeatedLetter } from "../services/getRepeatedLetter";
 
 export const RepeatsForm = (props: FormTypes) => {
 
+    const handleTextInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.setSentence(e.target.value);
+    }
+
     const getResult = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         getRepeatedLetter(props.sentence).then((response: any) => {
@@ -36,7 +40,7 @@ export const RepeatsForm = (props: FormTypes) => {
                             <input 
                                 type="text" 
                                 value={props.sentence}
-                                onChange={(e) => props.setSentence(e.target.value)}
+                                onChange={handleTextInput}
                                 maxLength={500}
                                 placeholder="Enter Sentence Here!" 
                             />
