@@ -16,7 +16,7 @@ describe('passing a valid value', () => {
                 count: 5
             }
         ]
-        expect(firstLetter(values)).toBe({letter: "a", count: 5});
+        expect(firstLetter(values)).toStrictEqual({letter: "a", count: 5});
     });
     it('should return the passed value if only one is passed', () => {
         let values = [
@@ -25,6 +25,6 @@ describe('passing a valid value', () => {
                 count: 5
             },
         ]
-        expect(firstLetter(values)).toBe({letter: "z", count: 5});
+        expect(firstLetter(values)).toStrictEqual({letter: "z", count: 5});
     });
 })

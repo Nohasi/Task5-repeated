@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "npx nodemon",
-    "test": "jest",
+    "test": "jest --verbose",
     "lint": "eslint \"**/*.js\" . --ext .ts"
   },
   "author": "",
