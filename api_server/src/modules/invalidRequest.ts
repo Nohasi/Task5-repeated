@@ -17,5 +17,9 @@ export const invalidRequest = (req: Request) => {
         return "No alphabetical characters were found";
     }
 
+    if(req.body.sentence.length > 500){
+        return "Text passed is too long";
+    }
+
     return null;
 }
