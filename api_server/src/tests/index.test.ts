@@ -69,10 +69,40 @@ describe('POST requests', () => {
             const res = await request(app)
             .post('/repeat')
             .send({
-                sentence: 5
+                sentence: ""
             })
             expect(res.body.status).toEqual(406);
-            expect(res.body.error).toBe("Value passed was not a string");
+            expect(res.body.error).toBe("Sentence is empty");
+        });
+
+        it('should return an error if no alphabetical characters were passed', async () => {
+            const res = await request(app)
+            .post('/repeat')
+            .send({
+                sentence: "1+1=2"
+            })
+            expect(res.body.status).toEqual(406);
+            expect(res.body.error).toBe("No alphabetical characters were found");
+        });
+
+        it('should return an error if text passed is longer than 500 characters', async () => {
+            const res = await request(app)
+            .post('/repeat')
+            .send({
+                sentence: `As an asynchronous event-driven JavaScript runtime, 
+                Node.js is designed to build scalable network applications. 
+                In the following 'hello world' example, many connections can be handled concurrently. 
+                Upon each connection, the callback is fired, but if there is no work to be done, 
+                Node.js will sleep. This is in contrast to today's more common concurrency model, 
+                in which OS threads are employed. Thread-based networking is relatively inefficient 
+                and very difficult to use. Furthermore, users of Node.js are free from worries of 
+                dead-locking the process, since there are no locks. Almost no function in Node.js 
+                directly performs I/O, so the process never blocks except when the I/O is performed 
+                using synchronous methods of Node.js standard library. Because nothing blocks, 
+                scalable systems are very reasonable to develop in Node.js.`
+            })
+            expect(res.body.status).toEqual(406);
+            expect(res.body.error).toBe("Text passed is too long");
         });
     });
 });
