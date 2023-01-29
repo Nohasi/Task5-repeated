@@ -30,7 +30,7 @@ export const findRepeats = (sentence: string) => {
         outputContainer.push(
             {
                 letter: result[i][0],
-                count: result[i][1]
+                count: Number(result[i][1])
             }
         );
     }
